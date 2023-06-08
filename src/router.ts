@@ -1,16 +1,37 @@
 import {createRouter, createWebHistory} from "vue-router";
 import Login from "./views/Login.vue";
+import {userStore} from "./stores/user.store.ts";
 
-export default createRouter({
+const routes = [
+    {
+        path: "/login",
+        name: "Login",
+        component: Login
+    },
+    {
+        path: "/",
+        name: "Home",
+        component: () => import("./views/Home.vue")
+    }
+]
+
+const router = createRouter({
     history: createWebHistory(),
-    routes: [
-        {
-            path: "/",
-            component: Login
-        },
-        {
-            path: "/home",
-            component: () => import("./components/HelloWorld.vue")
-        }
-    ]
+    routes
 })
+
+router.beforeEach((to, from, next) => {
+    const store = userStore();
+    const publicPages = ['/login'];
+    const authRequired = !publicPages.includes(to.path);
+    const loggedIn = store.user !== null;
+    if (authRequired && !loggedIn) {
+        return next('/login');
+    }else if(!authRequired && loggedIn){
+        return next('/');
+    }else {
+        next();
+    }
+});
+
+export default router;
