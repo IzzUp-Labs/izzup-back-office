@@ -2,9 +2,10 @@ export default interface UserInfoModel {
     id: number;
     email: string;
     password: string;
-    lastName: string;
-    firstName: string;
+    last_name: string;
+    first_name: string;
     role: string;
-    createdAt: Date;
-    updatedAt: Date;
+    date_of_birth: Date;
+    created_at: Date;
+    updated_at: Date;
 }

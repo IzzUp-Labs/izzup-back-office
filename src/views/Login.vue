@@ -7,11 +7,7 @@
   const authLoginCredentials : AuthLoginCredentialsModel = {
     email: '',
     password: ''
-  }
-
-  function login() {
-    store.login(authLoginCredentials);
-  }
+  };
 </script>
 
 <template>
@@ -42,7 +38,7 @@
         </div>
         <button type="button"
                 class="btn btn-accent flex items-center justify-center w-full"
-                v-on:click="login">Login to your account</button>
+                v-on:click="store.login(authLoginCredentials)">Login to your account</button>
       </form>
     </div>
   </div>
