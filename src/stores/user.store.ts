@@ -5,39 +5,46 @@ import http from "../http-common.ts";
 import jwt_decode from "jwt-decode";
 import userService from "../services/user.service.ts";
 import Token from "../models/token.model.ts";
-import {RoleEnum} from "../utils/enums/role.enum.ts";
+import DecodeToken from "../models/decode-oken.model.ts";
 import router from "../router.ts";
 import UserInfoModel from "../models/user-info.model.ts";
+import {RoleEnum} from "../models/role-enum.ts";
 
 export const userStore = defineStore('user',{
     state: () => {
         return {
             user: null as UserInfoModel | null,
+            token: null as string | null,
             isLogged: false
         }
     },
     actions: {
-        login(data: AuthLoginCredentialsModel): void {
-            AuthService.login(data).then((res) => {
-                const userTokenInfo: Token = jwt_decode(res.data.token);
-                userService.findOne(userTokenInfo.id).then((res) => {
-                    const userInfo = res.data;
-                    if(userInfo.role === RoleEnum.Admin){
-                        this.user = userInfo;
-                        this.isLogged = true;
-                        http.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;
-                        router.push({name: 'Home'}).then(r => console.log(r));
-                    }else{
-                        alert("You are not an admin");
-                    }
-                });
-            })
+        async login(data: AuthLoginCredentialsModel) {
+            await AuthService.login(data).then((resToken: Token) => {
+                http.defaults.headers.common['Authorization'] = `Bearer ${resToken.token}`;
+                localStorage.setItem('token', resToken.token);
+                this.token = resToken.token;
+            });
+            const decodeToken: DecodeToken = await jwt_decode(this.token as string);
+            await userService.findOne(decodeToken.id).then((resFind) => {
+                const userInfo = resFind;
+                if(userInfo.role === RoleEnum.ADMIN){
+                    this.user = userInfo;
+                    this.isLogged = true;
+                    router.push({name: 'Home'});
+                }else{
+                    alert("You are not an admin");
+                }
+            });
         },
         logout(): void {
             this.user = null;
             this.isLogged = false;
+            this.token = null;
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
             http.defaults.headers.common['Authorization'] = '';
-            router.push({name: 'Login'}).then(r => console.log(r));
-        }
-    }
+            router.push({name: 'Login'});
+        },
+    },
 });

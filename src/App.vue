@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import SideBar from "./components/SideBar.vue";
 import {userStore} from "./stores/user.store.ts";
+import Login from "./views/Login.vue";
 
 const store = userStore();
 const user = store.user;
@@ -8,9 +9,7 @@ const user = store.user;
 
 <template>
     <side-bar v-if="store.isLogged"></side-bar>
-    <div class="md:container md:mx-auto px-5">
-      <router-view />
-    </div>
+    <Login v-else></Login>
 </template>
 
 <style scoped>
