@@ -6,7 +6,6 @@ import {createPinia} from "pinia";
 import { createPersistedState } from 'pinia-plugin-persistedstate'
 import {userStore} from "./stores/user.store.ts";
 import {authStore} from "./stores/auth.store.ts";
-import VueGoogleMaps from '@fawmi/vue-google-maps'
 
 const pinia = createPinia()
 pinia.use(createPersistedState({
@@ -16,11 +15,6 @@ pinia.use(createPersistedState({
 createApp(App)
     .use(router)
     .use(pinia)
-    .use(VueGoogleMaps, {
-        load: {
-            key: process.env.VITE_GOOGLE_API_KEY,
-        },
-    })
     .mount('#app')
 
 userStore();

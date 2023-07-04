@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import {onBeforeMount, ref} from "vue";
-  import userService from "../services/user.service.ts";
-  import UserInfoModel from "../models/user-info.model.ts";
+import userService from "../services/user.service.ts";
+import UserInfoModel from "../models/user-info.model.ts";
+import VerifyUser from "../components/modals/user/VerifyUser.vue";
 
   const users = ref<UserInfoModel[]>([]);
   const selectedUser = ref<UserInfoModel>();
@@ -16,7 +17,7 @@ import {onBeforeMount, ref} from "vue";
     showModal.value = !showModal.value;
   }
 
-  function verifyUser(user_id: number){
+  function verifyUserByID(user_id: number){
     showModal.value = false;
     userService.verifyUser(user_id);
     users.value = users.value.filter(user => user.id !== user_id);
@@ -24,7 +25,7 @@ import {onBeforeMount, ref} from "vue";
 </script>
 
 <template>
-  <VerifyUser v-if="showModal" class="modal" :class="{ 'modal-open': showModal }" :selected_user="selectedUser" @close="showModal = false" @verify="(user_id) => verifyUser(user_id)"></VerifyUser>
+  <VerifyUser v-if="showModal" class="modal" :class="{ 'modal-open': showModal }" :selected_user="selectedUser" @close="showModal = false" @verify="(user_id) => verifyUserByID(user_id)"></VerifyUser>
   <div v-if="users.length > 0">
     <div class="flex justify-center pb-5">
       <h2 class="text-3xl font-bold">Liste des utilisateurs non vérifié</h2>
