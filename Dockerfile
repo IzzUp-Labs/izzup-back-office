@@ -1,13 +1,12 @@
-FROM node:lts-alpine as builder
+FROM node:15.4 as build
 
 WORKDIR /app
-COPY . ./
-RUN npm install && npm run build
+COPY package*.json .
 
-FROM nginx:alpine
-COPY app.conf /etc/nginx/conf.d/
+RUN npm install
+COPY . .
+RUN npm run build
 
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-EXPOSE 80
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+FROM nginx:1.19
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+COPY --from=build /app/dist /usr/share/nginx/html
