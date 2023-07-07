@@ -33,9 +33,7 @@
 
   function createCard(card: HomeCardModel){
     showAddModal.value = false;
-    cardService.create(card).then(() => {
-      window.location.reload();
-    });
+    cardService.create(card);
   }
 </script>
 
