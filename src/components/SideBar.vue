@@ -68,35 +68,27 @@ const user: UserInfoModel | null = store.user;
             <router-link to="/">
               <li>
                 <a>
-                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"
-                          stroke-width="2"/>
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9"/><path d="M9 22V12h6v10M2 10.6L12 2l10 8.6"/></svg>
                   Dashboard
                 </a>
               </li>
             </router-link>
-            <li>
-              <a>
-                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                     xmlns="http://www.w3.org/2000/svg">
-                  <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="2"/>
-                </svg>
-                Information
-              </a>
-            </li>
-            <li>
-              <a>
-                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                     xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="2"/>
-                </svg>
-                Statistics
-              </a>
-            </li>
+            <router-link to="/information">
+              <li>
+                <a>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"></path></svg>
+                  Information
+                </a>
+              </li>
+            </router-link>
+            <router-link to="/statistics">
+              <li>
+                <a>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
+                  Statistics
+                </a>
+              </li>
+            </router-link>
           </ul>
         </li>
         <li class="mt-5">
@@ -105,11 +97,7 @@ const user: UserInfoModel | null = store.user;
             <router-link to="/user-list">
               <li>
                 <a>
-                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"
-                          stroke-width="2"/>
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                   List of Users
                 </a>
               </li>
@@ -117,11 +105,7 @@ const user: UserInfoModel | null = store.user;
             <router-link to="/unverified-users">
               <li>
                 <a>
-                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"
-                          stroke-width="2"/>
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="18" y1="8" x2="23" y2="13"></line><line x1="23" y1="8" x2="18" y2="13"></line></svg>
                   Unverified Users
                 </a>
               </li>
@@ -134,11 +118,7 @@ const user: UserInfoModel | null = store.user;
             <router-link to="/home-cards">
               <li>
                 <a>
-                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"
-                          stroke-width="2"/>
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
                   Manage cards
                 </a>
               </li>
@@ -146,34 +126,30 @@ const user: UserInfoModel | null = store.user;
             <router-link to="/tags">
               <li>
                 <a>
-                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"
-                          stroke-width="2"/>
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
                   Manage tags
                 </a>
               </li>
             </router-link>
           </ul>
         </li>
-        <li class="mt-5">
-          <h2 class="menu-title">Manage Company</h2>
-          <ul>
-            <router-link to="/company-list">
-              <li>
-                <a>
-                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                       xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"
-                          stroke-width="2"/>
-                  </svg>
-                  View Company
-                </a>
-              </li>
-            </router-link>
-          </ul>
-        </li>
+<!--        <li class="mt-5">-->
+<!--          <h2 class="menu-title">Manage Company</h2>-->
+<!--          <ul>-->
+<!--            <router-link to="/company-list">-->
+<!--              <li>-->
+<!--                <a>-->
+<!--                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"-->
+<!--                       xmlns="http://www.w3.org/2000/svg">-->
+<!--                    <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"-->
+<!--                          stroke-width="2"/>-->
+<!--                  </svg>-->
+<!--                  View Company-->
+<!--                </a>-->
+<!--              </li>-->
+<!--            </router-link>-->
+<!--          </ul>-->
+<!--        </li>-->
       </ul>
     </div>
   </div>
