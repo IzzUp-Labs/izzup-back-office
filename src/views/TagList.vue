@@ -21,16 +21,26 @@ import AddTag from "../components/modals/tag/AddTag.vue";
   }
 
   function updateTag(updatedTag: ExtraTagModel){
-    console.log(updatedTag)
+    showModal.value = false;
+    TagService.update(updatedTag.id, updatedTag);
+    tags.value = tags.value.map(tag => tag.id === updatedTag.id ? updatedTag : tag);
   }
 
   function addTag(newTag: ExtraTagModel){
-    console.log(newTag)
+    showAddModal.value = false;
+    TagService.create(newTag);
+    tags.value = [...tags.value, newTag];
+  }
+
+  function deleteTag(id: number){
+    showModal.value = false;
+    TagService.remove(id);
+    tags.value = tags.value.filter(tag => tag.id !== id);
   }
 </script>
 
 <template>
-  <ShowTag v-if="showModal" class="modal" :class="{ 'modal-open': showModal }" :selected_tag="selectedTag" @close="showModal = false" @update="(updatedTag) => updateTag(updatedTag)"></ShowTag>
+  <ShowTag v-if="showModal" class="modal" :class="{ 'modal-open': showModal }" :selected_tag="selectedTag" @close="showModal = false" @update="(updatedTag) => updateTag(updatedTag)" @delete="(deleteTagId) => deleteTag(deleteTagId)"></ShowTag>
   <AddTag v-if="showAddModal" class="modal" :class="{ 'modal-open': showAddModal }" @close="showAddModal = false" @create="(newTag) => addTag(newTag)"></AddTag>
   <div v-if="tags.length > 0">
     <div class="flex justify-center pb-5">

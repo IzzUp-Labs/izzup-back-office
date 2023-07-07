@@ -22,7 +22,7 @@ class TagService {
     }
 
     async update(id: number, tag: ExtraTagModel) {
-        return http.put("/tag/"+id, tag).then((res) => {
+        return http.patch("/tag/"+id, tag).then((res) => {
             return res.data as ExtraTagModel;
         });
     }

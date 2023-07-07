@@ -8,5 +8,11 @@ class AuthService {
         return res.data as Token;
     });
   }
+
+  async getConnectedDevices() {
+    return await http.get("/auth/connected/devices").then((res) => {
+        return res.data as string[];
+    });
+  }
 }
 export default new AuthService();

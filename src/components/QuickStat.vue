@@ -1,5 +1,9 @@
 <script setup lang="ts">
-
+  defineProps<{
+    connected_devices: [],
+    created_users: [],
+    unverified_users: [],
+  }>()
 </script>
 
 <template>
@@ -12,9 +16,22 @@
                 stroke-width="2"></path>
         </svg>
       </div>
-      <div class="stat-title">Downloads</div>
-      <div class="stat-value">31K</div>
-      <div class="stat-desc">Jan 1st - Feb 1st</div>
+      <div class="stat-title">Actuellement connectés</div>
+      <div class="stat-value">{{connected_devices.length}}</div>
+      <div class="stat-desc">{{new Date().toISOString()}}</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-figure text-secondary">
+
+        <svg class="inline-block w-8 h-8 stroke-current" fill="none" viewBox="0 0 24 24"
+             xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2"></path>
+        </svg>
+      </div>
+      <div class="stat-title">Total User</div>
+      <div class="stat-value">{{ created_users.length }}</div>
     </div>
 
     <div class="stat">
@@ -25,22 +42,8 @@
                 stroke-width="2"></path>
         </svg>
       </div>
-      <div class="stat-title">New Users</div>
-      <div class="stat-value">4,200</div>
-      <div class="stat-desc">↗︎ 400 (22%)</div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-figure text-secondary">
-        <svg class="inline-block w-8 h-8 stroke-current" fill="none" viewBox="0 0 24 24"
-             xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" stroke-linecap="round" stroke-linejoin="round"
-                stroke-width="2"></path>
-        </svg>
-      </div>
-      <div class="stat-title">New Registers</div>
-      <div class="stat-value">1,200</div>
-      <div class="stat-desc">↘︎ 90 (14%)</div>
+      <div class="stat-title">Unverified User</div>
+      <div class="stat-value">{{ unverified_users.length }}</div>
     </div>
   </div>
 </template>
