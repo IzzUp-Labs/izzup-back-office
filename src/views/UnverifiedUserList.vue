@@ -17,13 +17,13 @@ import VerifyUser from "../components/modals/user/VerifyUser.vue";
     showModal.value = !showModal.value;
   }
 
-  function verifyUserByID(user_id: number){
+  function verifyUserByID(user_id: string){
     showModal.value = false;
     userService.verifyUser(user_id);
     users.value = users.value.filter(user => user.id !== user_id);
   }
 
-  function unverifyUserByID(user_id: number){
+  function unverifyUserByID(user_id: string){
     showModal.value = false;
     userService.unverifyUser(user_id);
     users.value = users.value.filter(user => user.id !== user_id);

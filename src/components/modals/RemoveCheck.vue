@@ -6,7 +6,7 @@
   }>()
   const emit = defineEmits<{
     pass: () => void,
-    remove: [value: number]
+    remove: [value: string]
   }>()
 </script>
 

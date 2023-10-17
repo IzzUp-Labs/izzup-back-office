@@ -12,12 +12,11 @@
   const emit = defineEmits<{
     close: () => void,
     update: [value: ExtraTagModel],
-    delete: [id: number]
+    delete: [id: string]
   }>()
 
   watch(tagModification, () => {
     isUpdated.value = true;
-    console.log(tagModification.value)
   }, {deep: true});
 
 </script>

@@ -4,6 +4,7 @@
   import cardService from "../services/card.service.ts";
   import RemoveCheck from "../components/modals/RemoveCheck.vue";
   import AddHomeCard from "../components/modals/home-card/AddHomeCard.vue";
+  import router from "../router.ts";
 
   const homeCardList = ref<HomeCardModel[]>([]);
   const selectedCard = ref<HomeCardModel>();
@@ -24,17 +25,17 @@
     showAddModal.value = !showAddModal.value;
   }
 
-  function removeCard(cardId: number){
+  function removeCard(cardId: string){
     showCheckModal.value = false;
     cardService.remove(cardId).then(() => {
-      window.location.reload();
+      router.push({ name: 'HomeCardList' })
     });
   }
 
   function createCard(card: HomeCardModel){
     showAddModal.value = false;
     cardService.create(card).then(() => {
-      window.location.reload();
+      router.push({ name: 'HomeCardList' })
     });
   }
 </script>

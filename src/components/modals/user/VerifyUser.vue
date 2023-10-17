@@ -10,8 +10,8 @@
 
   const emit = defineEmits<{
     close: () => void,
-    verify: [value: number],
-    unverify: [value: number]
+    verify: [value: string],
+    unverify: [value: string]
   }>()
 </script>
 

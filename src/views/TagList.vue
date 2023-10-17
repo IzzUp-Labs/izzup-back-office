@@ -32,7 +32,7 @@ import AddTag from "../components/modals/tag/AddTag.vue";
     tags.value = [...tags.value, newTag];
   }
 
-  function deleteTag(id: number){
+  function deleteTag(id: string){
     showModal.value = false;
     TagService.remove(id);
     tags.value = tags.value.filter(tag => tag.id !== id);

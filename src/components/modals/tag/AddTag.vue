@@ -3,7 +3,7 @@
   import {ref} from "vue";
 
   const newTag = ref<ExtraTagModel>({
-    id: 0,
+    id: "",
     name: "",
     color: "#000000",
   });

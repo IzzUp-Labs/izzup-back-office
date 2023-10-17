@@ -30,7 +30,7 @@
     users.value = users.value.map(user => user.id === updatedUser.id ? updatedUser : user);
   }
 
-  function removeUser(user_id: number){
+  function removeUser(user_id: string){
     showCheckModal.value = false;
     UserService.remove(user_id);
     users.value = users.value.filter(user => user.id !== user_id);
