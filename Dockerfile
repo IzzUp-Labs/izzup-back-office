@@ -1,13 +1,15 @@
-FROM node:lts-alpine as builder
-
+FROM node:14-alpine as vue-build
 WORKDIR /app
-COPY . ./
-RUN npm install && npm run build
+COPY package*.json ./
+RUN npm install
+COPY ./ .
+RUN npm run build
 
+# server environment
 FROM nginx:alpine
-COPY app.conf /etc/nginx/conf.d/
-
-COPY --from=builder /app/dist /usr/share/nginx/html
-
+COPY nginx.conf /etc/nginx/conf.d/configfile.template
+COPY --from=vue-build /app/dist /usr/share/nginx/html
+ENV PORT 8080
+ENV HOST 0.0.0.0
 EXPOSE 8080
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+CMD sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/configfile.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
