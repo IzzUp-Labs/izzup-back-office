@@ -35,6 +35,18 @@
     UserService.remove(user_id);
     users.value = users.value.filter(user => user.id !== user_id);
   }
+
+  function formatDate(dateString: string) {
+    const date = new Date(dateString);
+    // Then specify how you want your dates to be formatted
+    return new Intl.DateTimeFormat('default', {dateStyle: 'full', timeStyle: "short"}).format(date);
+  }
+
+  function formatDateBirth(dateString: string) {
+    const date = new Date(dateString);
+    // Then specify how you want your dates to be formatted
+    return new Intl.DateTimeFormat('default', {dateStyle: 'short'}).format(date);
+  }
 </script>
 
 <template>
@@ -67,10 +79,10 @@
             <td>{{user.email}}</td>
             <td>{{user.first_name}}</td>
             <td>{{user.last_name}}</td>
-            <td>{{user.date_of_birth}}</td>
+            <td>{{formatDateBirth(user.date_of_birth.toString())}}</td>
             <td>{{user.role}}</td>
-            <td>{{user.created_at}}</td>
-            <td>{{user.updated_at}}</td>
+            <td>{{formatDate(user.created_at.toString())}}</td>
+            <td>{{formatDate(user.updated_at.toString())}}</td>
             <td class="w-10">
               <button type="button" class="btn btn-circle" v-on:click="openModal(user)">
                 <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">

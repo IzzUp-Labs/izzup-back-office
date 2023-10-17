@@ -28,6 +28,18 @@ import VerifyUser from "../components/modals/user/VerifyUser.vue";
     userService.unverifyUser(user_id);
     users.value = users.value.filter(user => user.id !== user_id);
   }
+
+  function formatDate(dateString: string) {
+    const date = new Date(dateString);
+    // Then specify how you want your dates to be formatted
+    return new Intl.DateTimeFormat('default', {dateStyle: 'full', timeStyle: "short"}).format(date);
+  }
+
+  function formatDateBirth(dateString: string) {
+    const date = new Date(dateString);
+    // Then specify how you want your dates to be formatted
+    return new Intl.DateTimeFormat('default', {dateStyle: 'short'}).format(date);
+  }
 </script>
 
 <template>
@@ -65,10 +77,10 @@ import VerifyUser from "../components/modals/user/VerifyUser.vue";
           <td>{{user.email}}</td>
           <td>{{user.first_name}}</td>
           <td>{{user.last_name}}</td>
-          <td>{{user.date_of_birth}}</td>
+          <td>{{formatDateBirth(user.date_of_birth.toString())}}</td>
           <td>{{user.role}}</td>
-          <td>{{user.created_at}}</td>
-          <td>{{user.updated_at}}</td>
+          <td>{{formatDate(user.created_at.toString())}}</td>
+          <td>{{formatDate(user.updated_at.toString())}}</td>
           <td>
             <button class="btn btn-accent" v-on:click="openModal(user)">
               Vérifier

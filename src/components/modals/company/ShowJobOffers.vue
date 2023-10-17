@@ -27,7 +27,7 @@
             <p>Description : {{ jobOffer.job_description }}</p>
             <p>L'offre est de {{ jobOffer.price }}€ de l'heure</p>
             <p>Est-elle encore disponible : {{ jobOffer.is_available? "Oui" : "Non" }}</p>
-            <p>Date de début : {{ formatDate(jobOffer.starting_date) }}</p>
+            <p>Date de début : {{ formatDate(jobOffer.starting_date.toString()) }}</p>
             <p>Pour une durée de {{ jobOffer.working_hours }} heure(s)</p>
             <p>Actuellement {{jobOffer.acceptedSpots}} place(s) acceptée sur {{ jobOffer.spots }} place(s)</p>
           </div>
