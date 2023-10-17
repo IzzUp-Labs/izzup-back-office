@@ -28,40 +28,53 @@
 </script>
 
 <template>
-  <dialog>
-    <div>
+  <dialog class="modal">
       <form method="dialog" class="modal-box">
-        <h3 class="font-bold text-lg">Modification de l'utilisateur</h3>
-        <div>
-          <label class="label">
-            <span class="label-text">Email :</span>
-          </label>
-          <input type="text" class="input input-bordered input-accent w-full max-w-xs" v-model="userModification.email" v-bind:disabled="checkAdmin()"/>
-        </div>
-        <div>
-          <label class="label">
-            <span class="label-text">Lastname :</span>
-          </label>
-          <input type="text" class="input input-bordered input-accent w-full max-w-xs" v-model="userModification.last_name" v-bind:disabled="checkAdmin()"/>
-        </div>
-        <div>
-          <label class="label">
-            <span class="label-text">Firstname :</span>
-          </label>
-          <input type="text" class="input input-bordered input-accent w-full max-w-xs" v-model="userModification.first_name" v-bind:disabled="checkAdmin()"/>
-        </div>
-        <div>
-          <label class="label">
-            <span class="label-text">Photo de profile :</span>
-          </label>
-          <input type="file" class="file-input file-input-bordered file-input-accent w-full max-w-xs" v-bind:disabled="checkAdmin()"/>
-        </div>
-        <div class="modal-action">
-          <button class="btn btn-error" v-on:click="emit('close');">Close</button>
-          <button class="btn btn-accent" v-on:click="emit('update', userModification);" v-bind:disabled="!isUpdated">Modifier</button>
+        <h3 class="font-bold text-lg flex justify-center">Information de l'utilisateur</h3>
+        <div class="flex justify-center">
+          <div>
+            <div>
+              <label class="label">
+                <span class="label-text">Email :</span>
+              </label>
+              <input type="text" class="input input-bordered input-accent w-full max-w-xs" disabled v-model="userModification.email"/>
+            </div>
+            <div>
+              <label class="label">
+                <span class="label-text">Lastname :</span>
+              </label>
+              <input type="text" class="input input-bordered input-accent w-full max-w-xs" disabled v-model="userModification.last_name"/>
+            </div>
+            <div>
+              <label class="label">
+                <span class="label-text">Firstname :</span>
+              </label>
+              <input type="text" class="input input-bordered input-accent w-full max-w-xs" disabled v-model="userModification.first_name"/>
+            </div>
+            <div>
+              <label class="label">
+                <span class="label-text">Photo de profile :</span>
+              </label>
+              <div v-if="userModification.photo" class="flex justify-center">
+                <label class="btn btn-ghost btn-circle btn-lg avatar" tabindex="0">
+                  <div class="avatar placeholder">
+                    <div class="bg-neutral-focus text-neutral-content rounded-full w-auto">
+                      <figure><img :src="userModification.photo" alt="badge"/></figure>
+                    </div>
+                  </div>
+                </label>
+              </div>
+              <div v-else>
+                Aucune photo de profile
+              </div>
+            </div>
+            <div class="modal-action flex justify-center">
+              <button class="btn btn-error" v-on:click="emit('close');">Close</button>
+              <!--          <button class="btn btn-accent" v-on:click="emit('update', userModification);" v-bind:disabled="!isUpdated">Modifier</button>-->
+            </div>
+          </div>
         </div>
       </form>
-    </div>
   </dialog>
 </template>
 

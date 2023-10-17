@@ -13,6 +13,7 @@ export default interface UserInfoModel {
     extra: ExtraModel;
     statuses: UserStatusModel[];
     id_photo: string;
+    photo: string;
     date_of_birth: Date;
     created_at: Date;
     updated_at: Date;
