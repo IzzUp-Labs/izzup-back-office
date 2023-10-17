@@ -22,7 +22,6 @@
 <template>
   <ShowJobOffers v-if="showModal" class="modal" :class="{ 'modal-open': showModal }" :job_offers="jobOffers" @close="showModal = false"></ShowJobOffers>
   <div v-if="companyList.length > 0">
-    <div class="overflow-auto pt-10" style="height: 80vh;">
       <div class="flex justify-center pb-5">
         <h2 class="text-3xl font-bold">Liste des sociétées</h2>
       </div>
@@ -61,7 +60,6 @@
           </tbody>
         </table>
       </div>
-    </div>
   </div>
 </template>
 
