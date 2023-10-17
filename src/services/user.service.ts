@@ -6,6 +6,7 @@ class UserService{
         return await axios.get(import.meta.env.VITE_API_URL + "/user/"+id, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Access-Control-Allow-Origin': '*',
             },
         }).then((res) => {
             return res.data as UserInfoModel;
@@ -16,6 +17,7 @@ class UserService{
         return await axios.get(import.meta.env.VITE_API_URL + "/user", {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Access-Control-Allow-Origin': '*',
             },
         }).then((res) => {
             return res.data as Array<UserInfoModel>;
@@ -26,6 +28,7 @@ class UserService{
         return await axios.patch(import.meta.env.VITE_API_URL + "/user/"+id, data, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Access-Control-Allow-Origin': '*',
             },
         }).then((res) => {
             return res.data as UserInfoModel;
@@ -36,6 +39,7 @@ class UserService{
         return await axios.get(import.meta.env.VITE_API_URL + "/user/users/unverified", {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Access-Control-Allow-Origin': '*',
             },
         }).then((res) => {
             return res.data as Array<UserInfoModel>;
@@ -46,6 +50,7 @@ class UserService{
         return await axios.patch(import.meta.env.VITE_API_URL + "/user/"+id+"/verify", {}, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Access-Control-Allow-Origin': '*',
             }
         });
     }
@@ -54,6 +59,7 @@ class UserService{
         return await axios.patch(import.meta.env.VITE_API_URL + "/user/"+id+"/not-verify", {}, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Access-Control-Allow-Origin': '*',
             }
         });
     }
@@ -62,6 +68,7 @@ class UserService{
         return await axios.delete(import.meta.env.VITE_API_URL + "/user/"+id, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Access-Control-Allow-Origin': '*',
             }
         });
     }

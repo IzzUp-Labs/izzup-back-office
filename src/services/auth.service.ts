@@ -4,7 +4,11 @@ import Token from "../models/token.model.ts";
 
 class AuthService {
   async login(data : AuthLoginCredentialsModel) {
-    return await http.post("/auth/login", data).then((res) => {
+    return await http.post("/auth/login", data, {
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        }
+    }).then((res) => {
         return res.data as Token;
     });
   }

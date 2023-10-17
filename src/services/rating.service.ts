@@ -8,6 +8,7 @@ class RatingService {
         return await axios.get(import.meta.env.VITE_API_URL + "/rating/users/"+stars, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Access-Control-Allow-Origin': '*',
             }
         }).then((res) => {
             return res.data as Array<UserInfoModel>;
@@ -18,6 +19,7 @@ class RatingService {
         return await axios.get(import.meta.env.VITE_API_URL + "/rating/user-stats/"+userId, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Access-Control-Allow-Origin': '*',
             }
         }).then((res) => {
             return res.data as RatingModel;

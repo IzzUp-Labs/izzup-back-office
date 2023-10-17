@@ -7,6 +7,7 @@ class TagService {
         return await axios.post(import.meta.env.VITE_API_URL + "/tag", tag, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Access-Control-Allow-Origin': '*',
             }
         }).then((res) => {
             return res.data as ExtraTagModel;
@@ -17,6 +18,7 @@ class TagService {
         return await axios.get(import.meta.env.VITE_API_URL + "/tag", {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Access-Control-Allow-Origin': '*',
             }
         }).then((res) => {
             return res.data as Array<ExtraTagModel>;
@@ -27,6 +29,7 @@ class TagService {
         return await axios.get(import.meta.env.VITE_API_URL + "/tag/"+id, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Access-Control-Allow-Origin': '*',
             }
         }).then((res) => {
             return res.data as ExtraTagModel;
@@ -37,6 +40,7 @@ class TagService {
         return await axios.patch(import.meta.env.VITE_API_URL + "/tag/"+id, tag, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Access-Control-Allow-Origin': '*',
             }
         }).then((res) => {
             return res.data as ExtraTagModel;
@@ -47,6 +51,7 @@ class TagService {
         return await axios.delete(import.meta.env.VITE_API_URL + "/tag/"+id, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Access-Control-Allow-Origin': '*',
             }
         }).then((res) => {
             return res.data as ExtraTagModel;

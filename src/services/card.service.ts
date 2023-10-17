@@ -15,7 +15,8 @@ class CardService {
         return await axios.post(import.meta.env.VITE_API_URL + "/homepage-card", formData, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
-                "Content-Type": "multipart/form-data"
+                "Content-Type": "multipart/form-data",
+                'Access-Control-Allow-Origin': '*',
             }
         }).then((res) => {
             return res.data as HomeCardModel;
@@ -26,6 +27,7 @@ class CardService {
         return await axios.get(import.meta.env.VITE_API_URL + "/homepage-card", {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Access-Control-Allow-Origin': '*',
             }
         }).then((res) => {
             return res.data as Array<HomeCardModel>;
@@ -36,6 +38,7 @@ class CardService {
         return await axios.get(import.meta.env.VITE_API_URL + "/homepage-card/"+id, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Access-Control-Allow-Origin': '*',
             }
         }).then((res) => {
             return res.data as HomeCardModel;
@@ -46,6 +49,7 @@ class CardService {
         return await axios.put(import.meta.env.VITE_API_URL + "/homepage-card/"+id, card, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Access-Control-Allow-Origin': '*',
             },
         }).then((res) => {
             return res.data as HomeCardModel;
@@ -56,6 +60,7 @@ class CardService {
         return await axios.delete(import.meta.env.VITE_API_URL + "/homepage-card/"+id, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Access-Control-Allow-Origin': '*',
             },
         }).then((res) => {
             return res.data as HomeCardModel;
