@@ -1,15 +1,22 @@
-FROM node:14-alpine as vue-build
+FROM node:lts-alpine
+
+# installe un simple serveur http pour servir un contenu statique
+RUN npm install -g http-server
+
+# définit le dossier 'app' comme dossier de travail
 WORKDIR /app
+
+# copie 'package.json' et 'package-lock.json' (si disponible)
 COPY package*.json ./
+
+# installe les dépendances du projet
 RUN npm install
-COPY ./ .
+
+# copie les fichiers et dossiers du projet dans le dossier de travail (par exemple : le dossier 'app')
+COPY . .
+
+# construit l'app pour la production en la minifiant
 RUN npm run build
 
-# server environment
-FROM nginx:alpine
-COPY nginx.conf /etc/nginx/conf.d/configfile.template
-COPY --from=vue-build /app/dist /usr/share/nginx/html
-ENV PORT 8080
-ENV HOST 0.0.0.0
 EXPOSE 8080
-CMD sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/configfile.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+CMD [ "http-server", "dist" ]
