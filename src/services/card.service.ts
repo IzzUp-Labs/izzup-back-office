@@ -1,5 +1,5 @@
 import HomeCardModel from "../models/home-card.model.ts";
-import http from '../http-common.ts';
+import axios from "axios";
 
 class CardService {
 
@@ -12,33 +12,52 @@ class CardService {
         if (card.link){
             formData.append('link', card.link);
         }
-        const headers = { 'Content-Type': 'multipart/form-data' };
-        return http.post("/homepage-card", formData, {headers}).then((res) => {
+        return await axios.post(import.meta.env.VITE_API_URL + "/homepage-card", formData, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                "Content-Type": "multipart/form-data"
+            }
+        }).then((res) => {
             return res.data as HomeCardModel;
         });
     }
 
     async findAll() {
-        return http.get("/homepage-card").then((res) => {
+        return await axios.get(import.meta.env.VITE_API_URL + "/homepage-card", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            }
+        }).then((res) => {
             return res.data as Array<HomeCardModel>;
         });
     }
 
-    async findOne(id: number) {
-        return http.get("/homepage-card/"+id).then((res) => {
+    async findOne(id: string) {
+        return await axios.get(import.meta.env.VITE_API_URL + "/homepage-card/"+id, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            }
+        }).then((res) => {
             return res.data as HomeCardModel;
         });
     }
 
-    async update(id: number, card: HomeCardModel) {
-        return http.put("/homepage-card/"+id, card).then((res) => {
+    async update(id: string, card: HomeCardModel) {
+        return await axios.put(import.meta.env.VITE_API_URL + "/homepage-card/"+id, card, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        }).then((res) => {
             return res.data as HomeCardModel;
         });
     }
 
-    async remove(id: number) {
-        console.log(id);
-        return http.delete("/homepage-card/"+id).then((res) => {
+    async remove(id: string) {
+        return await axios.delete(import.meta.env.VITE_API_URL + "/homepage-card/"+id, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        }).then((res) => {
             return res.data as HomeCardModel;
         });
     }

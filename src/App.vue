@@ -4,7 +4,6 @@ import {userStore} from "./stores/user.store.ts";
 import Login from "./views/Login.vue";
 
 const store = userStore();
-const user = store.user;
 </script>
 
 <template>

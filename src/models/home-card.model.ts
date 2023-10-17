@@ -1,5 +1,5 @@
 export default interface HomeCardModel {
-    id: number;
+    id: string;
     title: string;
     description: string;
     photo?: any;

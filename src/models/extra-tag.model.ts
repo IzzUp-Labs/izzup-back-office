@@ -1,5 +1,5 @@
 export default interface ExtraTagModel {
-    id: number;
+    id: string;
     name: string;
     color: string;
 }

@@ -22,10 +22,23 @@ import VerifyUser from "../components/modals/user/VerifyUser.vue";
     userService.verifyUser(user_id);
     users.value = users.value.filter(user => user.id !== user_id);
   }
+
+  function unverifyUserByID(user_id: number){
+    showModal.value = false;
+    userService.unverifyUser(user_id);
+    users.value = users.value.filter(user => user.id !== user_id);
+  }
 </script>
 
 <template>
-  <VerifyUser v-if="showModal" class="modal" :class="{ 'modal-open': showModal }" :selected_user="selectedUser" @close="showModal = false" @verify="(user_id) => verifyUserByID(user_id)"></VerifyUser>
+  <VerifyUser v-if="showModal"
+              class="modal"
+              :class="{ 'modal-open': showModal }"
+              :selected_user="selectedUser"
+              @close="showModal = false"
+              @verify="(user_id) => verifyUserByID(user_id)"
+              @unverify="(user_id) => unverifyUserByID(user_id)">
+  </VerifyUser>
   <div v-if="users.length > 0">
     <div class="flex justify-center pb-5">
       <h2 class="text-3xl font-bold">Liste des utilisateurs non vérifié</h2>
@@ -71,7 +84,7 @@ import VerifyUser from "../components/modals/user/VerifyUser.vue";
     </div>
   </div>
   <div v-else class="flex justify-center">
-    <h1 class="text-5xl font-bold">Aucun User</h1>
+    <h1 class="text-4xl font-bold">Aucun utilisateur non vérifié pour le moment</h1>
   </div>
 </template>
 

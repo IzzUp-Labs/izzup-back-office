@@ -39,9 +39,6 @@ const user: UserInfoModel | null = store.user;
             </li>
           </router-link>
           <li>
-            <a>Settings</a>
-          </li>
-          <li>
             <a v-on:click="store.logout()">Logout</a>
           </li>
         </ul>
@@ -81,24 +78,16 @@ const user: UserInfoModel | null = store.user;
                 </a>
               </li>
             </router-link>
-            <router-link to="/statistics">
-              <li>
-                <a>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
-                  Statistics
-                </a>
-              </li>
-            </router-link>
           </ul>
         </li>
         <li class="mt-5">
-          <h2 class="menu-title">User Information</h2>
+          <h2 class="menu-title">Information Utilisateur</h2>
           <ul>
             <router-link to="/user-list">
               <li>
                 <a>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                  List of Users
+                  Liste des utilisateurs
                 </a>
               </li>
             </router-link>
@@ -106,20 +95,35 @@ const user: UserInfoModel | null = store.user;
               <li>
                 <a>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="18" y1="8" x2="23" y2="13"></line><line x1="23" y1="8" x2="18" y2="13"></line></svg>
-                  Unverified Users
+                  Utilisateurs non vérifiés
                 </a>
               </li>
             </router-link>
           </ul>
         </li>
         <li class="mt-5">
-          <h2 class="menu-title">Manage app elements</h2>
+          <h2 class="menu-title">Utilisateur Rating</h2>
+          <ul>
+            <router-link to="/users-rating">
+              <li>
+                <a>
+                  <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m11.479 1.712 2.367 4.8a.532.532 0 0 0 .4.292l5.294.769a.534.534 0 0 1 .3.91l-3.83 3.735a.534.534 0 0 0-.154.473l.9 5.272a.535.535 0 0 1-.775.563l-4.734-2.49a.536.536 0 0 0-.5 0l-4.73 2.487a.534.534 0 0 1-.775-.563l.9-5.272a.534.534 0 0 0-.154-.473L2.158 8.48a.534.534 0 0 1 .3-.911l5.294-.77a.532.532 0 0 0 .4-.292l2.367-4.8a.534.534 0 0 1 .96.004Z"/>
+                  </svg>
+                  Liste par note
+                </a>
+              </li>
+            </router-link>
+          </ul>
+        </li>
+        <li class="mt-5">
+          <h2 class="menu-title">Gestion des élements de l'application</h2>
           <ul>
             <router-link to="/home-cards">
               <li>
                 <a>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-                  Manage cards
+                  Gestion des cartes home
                 </a>
               </li>
             </router-link>
@@ -127,29 +131,27 @@ const user: UserInfoModel | null = store.user;
               <li>
                 <a>
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
-                  Manage tags
+                  Gestion des tags
                 </a>
               </li>
             </router-link>
           </ul>
         </li>
-<!--        <li class="mt-5">-->
-<!--          <h2 class="menu-title">Manage Company</h2>-->
-<!--          <ul>-->
-<!--            <router-link to="/company-list">-->
-<!--              <li>-->
-<!--                <a>-->
-<!--                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"-->
-<!--                       xmlns="http://www.w3.org/2000/svg">-->
-<!--                    <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"-->
-<!--                          stroke-width="2"/>-->
-<!--                  </svg>-->
-<!--                  View Company-->
-<!--                </a>-->
-<!--              </li>-->
-<!--            </router-link>-->
-<!--          </ul>-->
-<!--        </li>-->
+        <li class="mt-5">
+          <h2 class="menu-title">Gestion des entreprises</h2>
+          <ul>
+            <router-link to="/company-list">
+              <li>
+                <a>
+                  <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="21" height="20" fill="none" viewBox="0 0 21 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.308 9a2.257 2.257 0 0 0 2.25-2.264 2.25 2.25 0 0 0 4.5 0 2.25 2.25 0 0 0 4.5 0 2.25 2.25 0 1 0 4.5 0C19.058 5.471 16.956 1 16.956 1H3.045S1.058 5.654 1.058 6.736A2.373 2.373 0 0 0 3.308 9Zm0 0a2.243 2.243 0 0 0 1.866-1h.767a2.242 2.242 0 0 0 3.733 0h.767a2.242 2.242 0 0 0 3.733 0h.767a2.247 2.247 0 0 0 1.867 1A2.22 2.22 0 0 0 18 8.649V19H9v-7H5v7H2V8.524c.37.301.83.469 1.308.476ZM12 12h3v3h-3v-3Z"/>
+                  </svg>
+                  Liste des entreprises
+                </a>
+              </li>
+            </router-link>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>

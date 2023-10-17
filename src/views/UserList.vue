@@ -42,7 +42,7 @@
   <RemoveCheck v-if="showCheckModal" class="modal" :class="{ 'modal-open': showCheckModal }" :element="selectedUser" @remove="(id) => removeUser(id)" @pass="showCheckModal = false"></RemoveCheck>
   <div v-if="users.length > 0">
     <div class="flex justify-center pb-5">
-      <h2 class="text-3xl font-bold">Les des Utilisateurs</h2>
+      <h2 class="text-3xl font-bold">Liste des Utilisateurs</h2>
     </div>
     <div class="overflow-auto" style="height: 80vh;">
       <table class="table table-xs">

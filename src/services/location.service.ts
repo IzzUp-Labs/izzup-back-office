@@ -1,9 +1,13 @@
-import http from '../http-common.ts';
 import LocationModel from "../models/location.model.ts";
+import axios from "axios";
 
 class LocationService {
     async getAllLocations() {
-        return await http.get("/location").then((res) => {
+        return await axios.get(import.meta.env.VITE_API_URL + "/location", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            }
+        }).then((res) => {
             return res.data as Array<LocationModel>;
         });
     }

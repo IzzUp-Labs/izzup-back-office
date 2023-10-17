@@ -1,34 +1,54 @@
 import ExtraTagModel from "../models/extra-tag.model.ts";
-import http from '../http-common.ts';
+import axios from "axios";
 
 class TagService {
 
     async create(tag: ExtraTagModel) {
-        return http.post("/tag", tag).then((res) => {
+        return await axios.post(import.meta.env.VITE_API_URL + "/tag", tag, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            }
+        }).then((res) => {
             return res.data as ExtraTagModel;
         });
     }
 
     async findAll() {
-        return http.get("/tag").then((res) => {
+        return await axios.get(import.meta.env.VITE_API_URL + "/tag", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            }
+        }).then((res) => {
             return res.data as Array<ExtraTagModel>;
         });
     }
 
-    async findOne(id: number) {
-        return http.get("/tag/"+id).then((res) => {
+    async findOne(id: string) {
+        return await axios.get(import.meta.env.VITE_API_URL + "/tag/"+id, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            }
+        }).then((res) => {
             return res.data as ExtraTagModel;
         });
     }
 
-    async update(id: number, tag: ExtraTagModel) {
-        return http.patch("/tag/"+id, tag).then((res) => {
+    async update(id: string, tag: ExtraTagModel) {
+        return await axios.patch(import.meta.env.VITE_API_URL + "/tag/"+id, tag, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            }
+        }).then((res) => {
             return res.data as ExtraTagModel;
         });
     }
 
-    async remove(id: number) {
-        return http.delete("/tag/"+id).then((res) => {
+    async remove(id: string) {
+        return await axios.delete(import.meta.env.VITE_API_URL + "/tag/"+id, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            }
+        }).then((res) => {
             return res.data as ExtraTagModel;
         });
     }

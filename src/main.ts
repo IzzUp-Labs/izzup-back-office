@@ -5,7 +5,6 @@ import router from './router'
 import {createPinia} from "pinia";
 import { createPersistedState } from 'pinia-plugin-persistedstate'
 import {userStore} from "./stores/user.store.ts";
-import {authStore} from "./stores/auth.store.ts";
 
 const pinia = createPinia()
 pinia.use(createPersistedState({
@@ -18,4 +17,3 @@ createApp(App)
     .mount('#app')
 
 userStore();
-authStore();

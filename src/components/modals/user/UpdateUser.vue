@@ -2,7 +2,7 @@
 
   import UserInfoModel from "../../../models/user-info.model.ts";
   import {ref, watch} from "vue";
-  import {RoleEnum} from "../../../models/role-enum.ts";
+  import {RoleEnum} from "../../../models/enums/role-enum.ts";
 
   const props = defineProps<{
     selected_user: UserInfoModel

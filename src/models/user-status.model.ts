@@ -1,4 +1,4 @@
 export default interface UserStatusModel {
-    id: number;
+    id: string;
     name: string;
 }

@@ -1,37 +1,69 @@
-import http from '../http-common.ts';
 import UserInfoModel from "../models/user-info.model.ts";
+import axios from "axios";
 
 class UserService{
-    async findOne(id: number) {
-        return await http.get("/user/"+id).then((res) => {
+    async findOne(id: string) {
+        return await axios.get(import.meta.env.VITE_API_URL + "/user/"+id, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        }).then((res) => {
             return res.data as UserInfoModel;
         });
     }
 
     async findAll() {
-        return await http.get("/user").then((res) => {
+        return await axios.get(import.meta.env.VITE_API_URL + "/user", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        }).then((res) => {
             return res.data as Array<UserInfoModel>;
         });
     }
 
-    async update(id: number, data: UserInfoModel) {
-        return await http.patch("/user/"+id, data).then((res) => {
+    async update(id: string, data: UserInfoModel) {
+        return await axios.patch(import.meta.env.VITE_API_URL + "/user/"+id, data, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        }).then((res) => {
             return res.data as UserInfoModel;
         });
     }
 
     async findAllUsersNotVerified() {
-        return await http.get("/user/users/unverified").then((res) => {
+        return await axios.get(import.meta.env.VITE_API_URL + "/user/users/unverified", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        }).then((res) => {
             return res.data as Array<UserInfoModel>;
         });
     }
 
-    async verifyUser(id: number) {
-        await http.patch("/user/"+id+"/verify");
+    async verifyUser(id: string) {
+        return await axios.patch(import.meta.env.VITE_API_URL + "/user/"+id+"/verify", {}, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            }
+        });
     }
 
-    async remove(id: number) {
-        await http.delete("/user/"+id);
+    async unverifyUser(id: string) {
+        return await axios.patch(import.meta.env.VITE_API_URL + "/user/"+id+"/not-verify", {}, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            }
+        });
+    }
+
+    async remove(id: string) {
+        return await axios.delete(import.meta.env.VITE_API_URL + "/user/"+id, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            }
+        });
     }
 }
 export default new UserService();

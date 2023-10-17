@@ -1,14 +1,12 @@
-import {defineStore} from 'pinia'
-import AuthService from "../services/auth.service.ts";
+import {defineStore} from 'pinia';
 import AuthLoginCredentialsModel from "../models/auth-login-credentials.model.ts";
 import http from "../http-common.ts";
 import jwt_decode from "jwt-decode";
-import userService from "../services/user.service.ts";
-import Token from "../models/token.model.ts";
 import DecodeToken from "../models/decode-oken.model.ts";
 import router from "../router.ts";
 import UserInfoModel from "../models/user-info.model.ts";
-import {RoleEnum} from "../models/role-enum.ts";
+import {RoleEnum} from "../models/enums/role-enum.ts";
+import axios from "axios";
 
 export const userStore = defineStore('user',{
     state: () => {
@@ -20,14 +18,17 @@ export const userStore = defineStore('user',{
     },
     actions: {
         async login(data: AuthLoginCredentialsModel) {
-            await AuthService.login(data).then((resToken: Token) => {
-                http.defaults.headers.common['Authorization'] = `Bearer ${resToken.token}`;
-                localStorage.setItem('token', resToken.token);
-                this.token = resToken.token;
+            await axios.post(import.meta.env.VITE_API_URL + "/auth/login", data).then((res) => {
+                localStorage.setItem('token', res.data.token);
+                this.$state.token = res.data.token;
             });
-            const decodeToken: DecodeToken = await jwt_decode(this.token as string);
-            await userService.findOne(decodeToken.id).then((resFind) => {
-                const userInfo = resFind;
+            const decodeToken: DecodeToken = await jwt_decode(this.$state.token as string);
+            await axios.get(import.meta.env.VITE_API_URL + "/user/" + decodeToken.id, {
+                headers: {
+                    Authorization: `Bearer ${this.$state.token}`,
+                },
+            }).then((resFind) => {
+                const userInfo = resFind.data;
                 if(userInfo.role === RoleEnum.ADMIN){
                     this.user = userInfo;
                     this.isLogged = true;

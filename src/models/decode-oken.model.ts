@@ -1,5 +1,5 @@
 export default interface DecodeToken {
-    id: number;
+    id: string;
     email: string;
     role: string;
     iat: number;

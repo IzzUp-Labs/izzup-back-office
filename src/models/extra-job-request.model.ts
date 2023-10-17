@@ -1,4 +1,4 @@
 export default interface ExtraJobRequestModel {
-    id: number;
+    id: string;
     status: string;
 }

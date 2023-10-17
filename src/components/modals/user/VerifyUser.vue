@@ -10,7 +10,8 @@
 
   const emit = defineEmits<{
     close: () => void,
-    verify: [value: number]
+    verify: [value: number],
+    unverify: [value: number]
   }>()
 </script>
 
@@ -23,8 +24,13 @@
           avec le role {{selected_user.role}} souhaite être vérifié.
         </p>
         <p>Veuillez vérifier sa pièce d'identitée ci-dessous avec les informations de son compte :</p>
-        <button class="btn btn-warning mt-5" onclick="id_card.showModal()" v-on:click="isChecked = true">Voir la pièce d'identitée</button>
-        <button class="btn btn-accent ms-5" v-bind:disabled="!isChecked" v-on:click="emit('verify', selected_user.id)">Valider le compte</button>
+        <div class="container flex flex-col items-center">
+          <button class="btn btn-warning mt-5" onclick="id_card.showModal()" v-on:click="isChecked = true">Voir la pièce d'identitée</button>
+        </div>
+        <div class="flex m-5">
+          <button class="btn btn-accent" v-bind:disabled="!isChecked" v-on:click="emit('verify', selected_user.id)">Valider le compte</button>
+          <button class="btn btn-error ms-5" v-bind:disabled="!isChecked" v-on:click="emit('unverify', selected_user.id)">Ne pas valider le compte</button>
+        </div>
         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" v-on:click="emit('close')">✕</button>
       </form>
       <dialog id="id_card" class="modal">

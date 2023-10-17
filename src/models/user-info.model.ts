@@ -3,7 +3,7 @@ import ExtraModel from "./extra.model.ts";
 import UserStatusModel from "./user-status.model.ts";
 
 export default interface UserInfoModel {
-    id: number;
+    id: string;
     email: string;
     password: string;
     last_name: string;
