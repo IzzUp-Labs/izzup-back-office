@@ -13,6 +13,12 @@
     verify: [value: string],
     unverify: [value: string]
   }>()
+
+  function formatDate(dateString: string) {
+    const date = new Date(dateString);
+    // Then specify how you want your dates to be formatted
+    return new Intl.DateTimeFormat('default', {dateStyle: 'full', timeStyle: "short"}).format(date);
+  }
 </script>
 
 <template>
@@ -20,7 +26,7 @@
     <div class="grid">
       <form method="dialog" class="modal-box">
         <h3 class="font-bold text-lg">Informations de vérification :</h3>
-        <p class="py-2">L'utilisateur {{ selected_user.first_name }} {{selected_user.last_name}} née le {{selected_user.date_of_birth}} et inscrit le {{selected_user.created_at}}
+        <p class="py-2">L'utilisateur {{ selected_user.first_name }} {{selected_user.last_name}} née le {{selected_user.date_of_birth}} et inscrit le {{formatDate(selected_user.created_at.toString())}}
           avec le role {{selected_user.role}} souhaite être vérifié.
         </p>
         <p>Veuillez vérifier sa pièce d'identitée ci-dessous avec les informations de son compte :</p>
