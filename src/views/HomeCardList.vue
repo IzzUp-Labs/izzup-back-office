@@ -28,14 +28,14 @@
   function removeCard(cardId: string){
     showCheckModal.value = false;
     cardService.remove(cardId).then(() => {
-      router.push({ name: 'HomeCardList' })
+      homeCardList.value = homeCardList.value.filter(card => card.id !== cardId);
     });
   }
 
   function createCard(card: HomeCardModel){
     showAddModal.value = false;
     cardService.create(card).then(() => {
-      router.push({ name: 'HomeCardList' })
+      homeCardList.value = [...homeCardList.value, card];
     });
   }
 </script>
